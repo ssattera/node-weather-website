@@ -64,7 +64,7 @@ app.get('/weather',(req,res)=>{
                 return res.send({error});
             }
             
-            forecast(longitude,latitude,(error,{weather_desc,temperature})=>{
+            forecast(longitude,latitude,(error,{weather_desc,temperature, feelslike})=>{
             
                 if(error){
             
@@ -75,7 +75,7 @@ app.get('/weather',(req,res)=>{
                 res.send(
                     {
                         location: location,
-                        forecast: weather_desc+'. It is currently '+temperature+' degrees!',
+                        forecast: weather_desc+'. It is currently '+temperature+' degrees!, but it feels like '+feelslike,
                         address: req.query.address
             
                     })
